@@ -2,6 +2,11 @@ package com.example.newapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
 import com.example.newapplication.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -19,6 +24,7 @@ class SignUpActivity : AppCompatActivity() {
             passwordDoubleCheck()
             mailCheck()
             passwordCheck()
+            progressBar()
         }
     }
     private fun setOnFocusListeners(){
@@ -62,5 +68,21 @@ class SignUpActivity : AppCompatActivity() {
                 "Şifreler aynı olmalıdır. Lütfen kontrol ederek tekrar deneyiniz."
         }
     }
-}
+    private fun progressBar(){
+        binding.singUp.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.progressBar.visibility = View.GONE
+            },2000)
+            }
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Kayıt Başarılı")
+        val dialog = dialogBuilder.create()
+        dialog.show()
+
+
+        }
+    }
+
 

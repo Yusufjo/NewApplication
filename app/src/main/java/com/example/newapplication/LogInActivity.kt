@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.newapplication.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class LogInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setOnClickListeners()
         setOnFocusChangeListeners()
-
-
     }
 
    private fun setOnClickListeners() {
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
    private fun singUpOnClickListener() {
         binding.signUpTextView.setOnClickListener {
-            val intent = Intent(this@MainActivity, SignUpActivity::class.java)
+            val intent = Intent(this@LogInActivity, SignUpActivity::class.java)
             startActivity(intent)
         }
     }
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
    private fun setPasswordFocusChangeListener() {
-        binding.passwordEditText.setOnFocusChangeListener { view, hasFocus ->
+        binding.inputEditText.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus) {
                 checkPassword()
             }
@@ -65,9 +63,9 @@ class MainActivity : AppCompatActivity() {
     }
 
    private fun checkPassword() {
-        val password = binding.passwordEditText.text.toString()
+        val password = binding.inputEditText.text.toString()
         if (password.length < 6) {
-            binding.passwordEditText.error = "Şifreniz minimum 6 karakterli olmalıdır."
+            binding.inputEditText.error = "Şifreniz minimum 6 karakterli olmalıdır."
         }
     }
 }
