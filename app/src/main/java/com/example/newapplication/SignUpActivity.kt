@@ -1,12 +1,14 @@
 package com.example.newapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import com.example.newapplication.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
@@ -15,16 +17,17 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setOnFocusListeners()
+      //  setOnFocusListeners()
         singUpOnClickListener()
+        textWatcher()
     }
 
     private fun singUpOnClickListener(){
         binding.singUp.setOnClickListener {
-            passwordDoubleCheck()
             mailCheck()
             passwordCheck()
             progressBar()
+            passwordDoubleCheck()
         }
     }
     private fun setOnFocusListeners(){
@@ -70,19 +73,44 @@ class SignUpActivity : AppCompatActivity() {
     }
     private fun progressBar(){
         binding.singUp.setOnClickListener {
+            val mail = binding.editTextTextEmailAddress2.text.toString()
+            val password = binding.editTextTextPassword.text.toString()
+            val password2 = binding.editTextTextPassword2.text.toString()
+            if (mail.contains('@') && password.length >= 6 && password == password2){
             binding.progressBar.visibility = View.VISIBLE
 
             Handler(Looper.getMainLooper()).postDelayed({
                 binding.progressBar.visibility = View.GONE
             },2000)
-            }
+
         val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle("Kayıt Başarılı")
+        dialogBuilder.setMessage("Kayıt Başarılı")
+
         val dialog = dialogBuilder.create()
-        dialog.show()
 
-
+                Handler().postDelayed({
+                    dialog.dismiss()
+                    dialog.show()
+                },2000)
+            }
         }
     }
+    private fun textWatcher(){
+
+        binding.editTextTextPassword.doAfterTextChanged{
+            val password= binding.editTextTextPassword.text.toString()
+            if (password.length < 6) {
+                binding.passwordEditText.error = "Şifreniz minimum 6 karakterli olmalıdır."
+            }
+            else{
+                binding.passwordEditText.error = null
+            }
+        }
+
+
+    }
+    }
+
+
 
 
