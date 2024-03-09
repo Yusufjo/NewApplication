@@ -60,6 +60,7 @@
         app:boxStrokeColor="@color/login"
         app:endIconMode="password_toggle"
         app:hintTextColor="@color/login"
+        app:errorIconDrawable="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
