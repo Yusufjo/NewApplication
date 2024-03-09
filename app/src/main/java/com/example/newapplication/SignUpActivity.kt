@@ -11,21 +11,22 @@ import com.example.newapplication.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    private val handler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         singUpOnClickListener()
-        textWatchers()
+        setTextWatchers()
 
     }
 
-    private fun singUpOnClickListener(){
+    private fun singUpOnClickListener() {
         binding.singUp.setOnClickListener {
             mailCheck()
             passwordCheck()
             passwordDoubleCheck()
-            progressBar()
+            showProgressBar()
         }
     }
 
@@ -34,8 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         val mail = binding.editTextTextEmailAddress2.text.toString()
         if (!mail.contains('@')) {
             binding.textInputLayout.error = "Lütfen geçerli bir e-posta adresi giriniz."
-        }
-        else{
+        } else {
             binding.textInputLayout.error = null
         }
     }
@@ -44,8 +44,7 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.editTextTextPassword.text.toString()
         if (password.length < 6) {
             binding.passwordEditText.error = "Şifreniz minimum 6 karakterli olmalıdır."
-        }
-        else{
+        } else {
             binding.passwordEditText.error = null
         }
     }
@@ -56,56 +55,60 @@ class SignUpActivity : AppCompatActivity() {
         if (password != password2) {
             binding.passwordEditTextConfirm.error =
                 "Şifreler aynı olmalıdır. Lütfen kontrol ederek tekrar deneyiniz."
-        }
-        else {
+        } else {
             binding.passwordEditTextConfirm.error = null
         }
     }
-    private fun textWatchers(){
+
+    private fun setTextWatchers() {
         mailTextWatcher()
         passwordTextWatcher()
         confirmPasswordTextWatcher()
     }
-    private fun passwordTextWatcher(){
-        binding.editTextTextPassword.doAfterTextChanged{
+
+    private fun passwordTextWatcher() {
+        binding.editTextTextPassword.doAfterTextChanged {
             passwordCheck()
         }
     }
-    private fun mailTextWatcher(){
+
+    private fun mailTextWatcher() {
         binding.editTextTextEmailAddress2.doAfterTextChanged {
             mailCheck()
         }
     }
-    private fun confirmPasswordTextWatcher(){
+
+    private fun confirmPasswordTextWatcher() {
         binding.editTextTextPassword2.doAfterTextChanged {
             passwordDoubleCheck()
         }
     }
-    private fun progressBar(){
+
+    private fun showProgressBar() {
         binding.singUp.setOnClickListener {
             val mail = binding.editTextTextEmailAddress2.text.toString()
             val password = binding.editTextTextPassword.text.toString()
             val password2 = binding.editTextTextPassword2.text.toString()
-            if (mail.contains('@') && password.length >= 6 && password == password2){
-            binding.progressBar.visibility = View.VISIBLE
+            if (mail.contains('@') && password.length >= 6 && password == password2) {
+                binding.progressBar.visibility = View.VISIBLE
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.progressBar.visibility = View.GONE
-            },2000)
+                handler.postDelayed({
+                    binding.progressBar.visibility = View.GONE
+                }, 2000)
 
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setMessage("Kayıt Başarılı")
+                val dialogBuilder = AlertDialog.Builder(this)
+                dialogBuilder.setMessage("Kayıt Başarılı")
 
-        val dialog = dialogBuilder.create()
-                Handler().postDelayed({
+                val dialog = dialogBuilder.create()
+                handler.postDelayed({
                     dialog.dismiss()
                     dialog.show()
-                },2000)
+                }, 2000)
             }
         }
     }
 
-    }
+}
 
 
 

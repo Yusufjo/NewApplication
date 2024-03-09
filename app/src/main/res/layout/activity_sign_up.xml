@@ -11,8 +11,8 @@
         android:id="@+id/textView2"
         android:layout_width="129dp"
         android:layout_height="45dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="76dp"
         android:fontFamily="@font/lora"
         android:text="@string/hello"
         android:textColor="@color/login"
@@ -24,7 +24,7 @@
         android:id="@+id/textView6"
         android:layout_width="260dp"
         android:layout_height="77dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/lora"
         android:text="@string/signUp"
@@ -33,19 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="342dp"
-        android:layout_height="105dp"
+        android:layout_width="330dp"
+        android:layout_height="104dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="232dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="41dp"
         android:inputType="text"
         app:boxStrokeColor="@color/login"
         app:hintTextColor="@color/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -66,10 +64,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="342dp"
-        android:layout_height="105dp"
+        android:layout_width="330dp"
+        android:layout_height="104dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="41dp"
         android:ems="10"
         android:inputType="textPassword"
         app:boxStrokeColor="@color/login"
@@ -77,7 +75,6 @@
         app:errorIconDrawable="@null"
         app:hintTextColor="@color/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
@@ -87,26 +84,25 @@
             android:layout_height="59dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="16dp"
-            android:textColorHighlight="@color/login"
             android:drawableStart="@drawable/baseline_lock_24"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:textColorHighlight="@color/login" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordEditTextConfirm"
-        android:layout_width="342dp"
-        android:layout_height="105dp"
+        android:layout_width="330dp"
+        android:layout_height="104dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="41dp"
         android:ems="10"
         android:inputType="textPassword"
         app:boxStrokeColor="@color/login"
         app:endIconMode="password_toggle"
-        app:hintTextColor="@color/login"
         app:errorIconDrawable="@null"
+        app:hintTextColor="@color/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText">
 
@@ -116,9 +112,9 @@
             android:layout_height="59dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="16dp"
-            android:textColorHighlight="@color/login"
             android:drawableStart="@drawable/baseline_lock_24"
-            android:hint="@string/confirmPassword" />
+            android:hint="@string/confirmPassword"
+            android:textColorHighlight="@color/login" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -190,7 +186,7 @@
         android:layout_width="90dp"
         android:layout_height="80dp"
         android:layout_marginTop="344dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"

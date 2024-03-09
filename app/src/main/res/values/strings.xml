@@ -12,4 +12,7 @@
     <string name="signup">Sign Up</string>
     <string name="signUp">Sign Up!</string>
     <string name="hello">Hello,</string>
+    <string name="kayıtBasariliBasligi">Kayıt Başarılı</string>
+    <string name="kayitBasariliYazisi">Tebrikler!, başarılı bir şekilde kayıt oluşturdunuz</string>
+    <string name="ok">Tamam</string>
 </resources>
