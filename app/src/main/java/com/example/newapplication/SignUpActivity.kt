@@ -8,12 +8,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.newapplication.databinding.ActivitySignUpBinding
+import com.example.newapplication.databinding.DialogLayoutBinding
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
     private val handler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         singUpOnClickListener()
@@ -27,6 +29,7 @@ class SignUpActivity : AppCompatActivity() {
             passwordCheck()
             passwordDoubleCheck()
             showProgressBar()
+            setDialog()
         }
     }
 
@@ -95,20 +98,29 @@ class SignUpActivity : AppCompatActivity() {
                 handler.postDelayed({
                     binding.progressBar.visibility = View.GONE
                 }, 2000)
-
-                val dialogBuilder = AlertDialog.Builder(this)
-                dialogBuilder.setMessage("Kayıt Başarılı")
-
-                val dialog = dialogBuilder.create()
-                handler.postDelayed({
-                    dialog.dismiss()
-                    dialog.show()
-                }, 2000)
             }
         }
     }
+    private fun setDialog(){
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        val dialogBinding = DialogLayoutBinding.inflate(layoutInflater)
+        alertDialogBuilder.setView(dialogBinding.root)
 
-}
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.window?.setBackgroundDrawableResource(R.drawable.bg_rounded)
+        alertDialog.show()
+
+     dialogBinding.button.setOnClickListener {
+            alertDialog.dismiss()
+
+//        handler.postDelayed({
+//            alertDialog.dismiss()
+//            alertDialog.show()
+//        }, 2000)
+
+    }
+
+}}
 
 
 
