@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.example.newapplication.databinding.ActivitySignUpBinding
 import com.example.newapplication.databinding.DialogLayoutBinding
+import com.example.newapplication.databinding.DialogNegativeBinding
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -18,12 +19,12 @@ class SignUpActivity : AppCompatActivity() {
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        singUpOnClickListener()
+        singUpOnClickListeners()
         setTextWatchers()
 
     }
 
-    private fun singUpOnClickListener() {
+    private fun singUpOnClickListeners() {
         binding.singUp.setOnClickListener {
             mailCheck()
             passwordCheck()
@@ -88,39 +89,59 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun showProgressBar() {
-        binding.singUp.setOnClickListener {
-            val mail = binding.editTextTextEmailAddress2.text.toString()
-            val password = binding.editTextTextPassword.text.toString()
-            val password2 = binding.editTextTextPassword2.text.toString()
-            if (mail.contains('@') && password.length >= 6 && password == password2) {
-                binding.progressBar.visibility = View.VISIBLE
 
-                handler.postDelayed({
-                    binding.progressBar.visibility = View.GONE
-                }, 2000)
+        val mail = binding.editTextTextEmailAddress2.text.toString()
+        val password = binding.editTextTextPassword.text.toString()
+        val password2 = binding.editTextTextPassword2.text.toString()
+        if (mail.contains('@') && password.length >= 6 && password == password2) {
+            binding.progressBar.visibility = View.VISIBLE
+
+            handler.postDelayed({
+                binding.progressBar.visibility = View.GONE
+            }, 2000)
+        }
+
+    }
+
+    private fun setDialog() {
+        //Bir kere tıklanınca oluyor
+        val mail = binding.editTextTextEmailAddress2.text.toString()
+        val password = binding.editTextTextPassword.text.toString()
+        val password2 = binding.editTextTextPassword2.text.toString()
+        val alertDialogBuilder = AlertDialog.Builder(this)
+
+        if (mail.contains('@') && password.length >= 6 && password == password2) {
+
+            val dialogBinding = DialogLayoutBinding.inflate(layoutInflater)
+            alertDialogBuilder.setView(dialogBinding.root)
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.bg_rounded)
+
+
+            alertDialog.show()
+
+            dialogBinding.button.setOnClickListener {
+                alertDialog.dismiss()
             }
         }
-    }
-    private fun setDialog(){
-        val alertDialogBuilder = AlertDialog.Builder(this)
-        val dialogBinding = DialogLayoutBinding.inflate(layoutInflater)
-        alertDialogBuilder.setView(dialogBinding.root)
+        else{
+            val negativeBinding = DialogNegativeBinding.inflate(layoutInflater)
+            alertDialogBuilder.setView(negativeBinding.root)
+            val  alertDialog = alertDialogBuilder.create()
+            alertDialog.window?.setBackgroundDrawableResource(R.drawable.bg_rounded)
+            alertDialog.show()
+            negativeBinding.button2.setOnClickListener {
+                alertDialog.dismiss()
+            }
 
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.window?.setBackgroundDrawableResource(R.drawable.bg_rounded)
-        alertDialog.show()
 
-     dialogBinding.button.setOnClickListener {
-            alertDialog.dismiss()
-
-//        handler.postDelayed({
-//            alertDialog.dismiss()
-//            alertDialog.show()
-//        }, 2000)
+        }
 
     }
 
-}}
+
+}
 
 
 

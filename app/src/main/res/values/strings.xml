@@ -15,4 +15,8 @@
     <string name="kayıtBasariliBasligi">Kayıt Başarılı</string>
     <string name="kayitBasariliYazisi">Tebrikler!, başarılı bir şekilde kayıt oluşturdunuz</string>
     <string name="ok">Tamam</string>
+    <string name="hata">Tekrar Deneyin!</string>
+    <string name="hataMesajı">Kayıt olabilmek için bilgileri lütfen doğru şekilde girin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
