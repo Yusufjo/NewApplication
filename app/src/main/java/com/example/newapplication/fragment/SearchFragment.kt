@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.newapplication.R
-import com.example.newapplication.databinding.FragmentHomeBinding
+import com.example.newapplication.databinding.FragmentSearchBinding
 
 
-class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
-
+class SearchFragment : Fragment() {
+    private lateinit var binding: FragmentSearchBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         return binding.root
     }
+
 }

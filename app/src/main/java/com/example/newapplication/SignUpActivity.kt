@@ -10,6 +10,7 @@ import androidx.core.widget.doAfterTextChanged
 import com.example.newapplication.databinding.ActivitySignUpBinding
 import com.example.newapplication.databinding.DialogLayoutBinding
 import com.example.newapplication.databinding.DialogNegativeBinding
+import kotlin.random.Random
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -19,6 +20,7 @@ class SignUpActivity : AppCompatActivity() {
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         singUpOnClickListeners()
         setTextWatchers()
 
@@ -30,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
             passwordCheck()
             passwordDoubleCheck()
             showProgressBar()
-            setDialog()
+
         }
     }
 
@@ -89,15 +91,12 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun showProgressBar() {
-
-        val mail = binding.editTextTextEmailAddress2.text.toString()
-        val password = binding.editTextTextPassword.text.toString()
-        val password2 = binding.editTextTextPassword2.text.toString()
-        if (mail.contains('@') && password.length >= 6 && password == password2) {
+        if (mailPasswordCheck()) {
             binding.progressBar.visibility = View.VISIBLE
 
             handler.postDelayed({
                 binding.progressBar.visibility = View.GONE
+                setDialog()
             }, 2000)
         }
 
@@ -105,12 +104,11 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun setDialog() {
         //Bir kere tıklanınca oluyor
-        val mail = binding.editTextTextEmailAddress2.text.toString()
-        val password = binding.editTextTextPassword.text.toString()
-        val password2 = binding.editTextTextPassword2.text.toString()
-        val alertDialogBuilder = AlertDialog.Builder(this)
 
-        if (mail.contains('@') && password.length >= 6 && password == password2) {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        val r = Random.nextBoolean()
+
+        if (r) {
 
             val dialogBinding = DialogLayoutBinding.inflate(layoutInflater)
             alertDialogBuilder.setView(dialogBinding.root)
@@ -124,11 +122,10 @@ class SignUpActivity : AppCompatActivity() {
             dialogBinding.button.setOnClickListener {
                 alertDialog.dismiss()
             }
-        }
-        else{
+        } else {
             val negativeBinding = DialogNegativeBinding.inflate(layoutInflater)
             alertDialogBuilder.setView(negativeBinding.root)
-            val  alertDialog = alertDialogBuilder.create()
+            val alertDialog = alertDialogBuilder.create()
             alertDialog.window?.setBackgroundDrawableResource(R.drawable.bg_rounded)
             alertDialog.show()
             negativeBinding.button2.setOnClickListener {
@@ -138,6 +135,16 @@ class SignUpActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun mailPasswordCheck(): Boolean {
+        val mail = binding.editTextTextEmailAddress2.text.toString()
+        val password = binding.editTextTextPassword.text.toString()
+        val password2 = binding.editTextTextPassword2.text.toString()
+        if (mail.contains('@') && password.length >= 6 && password == password2) {
+            return true
+        }
+        return false
     }
 
 

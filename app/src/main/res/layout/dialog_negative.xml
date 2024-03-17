@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetails" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewDetails"
         android:layout_width="wrap_content"
         android:layout_height="25sp"
         android:layout_marginTop="16dp"
