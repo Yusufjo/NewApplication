@@ -1,15 +1,11 @@
-package com.example.newapplication
+package com.example.newapplication.homePage
 
-import android.graphics.Color
-import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
+import com.example.newapplication.R
 import com.example.newapplication.databinding.ActivityHomePageBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomePageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomePageBinding

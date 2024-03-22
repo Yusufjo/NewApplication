@@ -1,43 +1,39 @@
-package com.example.newapplication
+package com.example.newapplication.loginPage
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.ViewModelProvider
+import com.example.newapplication.homePage.HomePageActivity
+import com.example.newapplication.R
+import com.example.newapplication.signupPage.SignUpActivity
 import com.example.newapplication.databinding.ActivityMainBinding
 import com.example.newapplication.databinding.DialogNegativeBinding
 
 class LogInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    //private val viewModel: LoginActivityViewModel by viewModels()
+    private lateinit var viewModel:LoginActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel = ViewModelProvider(this)[LoginActivityViewModel::class.java]
 
         setOnClickListeners()
         textWatchers()
     }
 
-    private fun profileController(): Boolean {
-        val mail = "yusuf@gmail.com"
-        val password = "123456"
-
-        val enteredMail = binding.mailEditText.text.toString()
-        val enteredPassword = binding.passwordEditText.text.toString()
-        if (mail == enteredMail && password == enteredPassword) {
-            return true
-        }
-        return false
-    }
 
     private fun setOnClickListeners() {
         singUpOnClickListener()
-        setLoginClickListener()
         loginOnClickListener()
 
     }
-
     private fun singUpOnClickListener() {
         binding.signUpTextView.setOnClickListener {
             val intent = Intent(this@LogInActivity, SignUpActivity::class.java)
@@ -46,9 +42,10 @@ class LogInActivity : AppCompatActivity() {
     }
 
     private fun loginOnClickListener() {
-
         binding.loginButton.setOnClickListener {
-            if (profileController()) {
+            val mail = binding.mailEditText.text.toString()
+            val password = binding.passwordEditText.text.toString()
+            if (viewModel.profileController(mail, password)) {
                 val intent = Intent(this@LogInActivity, HomePageActivity::class.java)
                 startActivity(intent)
             } else {
@@ -56,7 +53,6 @@ class LogInActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun negativeDialog() {
         val alertDialogBuilder = AlertDialog.Builder(this)
         val negativeBinding = DialogNegativeBinding.inflate(layoutInflater)
@@ -71,45 +67,25 @@ class LogInActivity : AppCompatActivity() {
         }
     }
 
-    private fun setLoginClickListener() {
-        binding.loginButton.setOnClickListener {
-            checkPassword()
-            checkEmail()
-        }
-    }
 
     private fun textWatchers() {
         mailTextWatcher()
         passwordTextWathcher()
     }
-
     private fun passwordTextWathcher() {
         binding.passwordEditText.doAfterTextChanged {
-            checkPassword()
+            it?.let {
+                viewModel.checkPassword(it.toString())
+                binding.passwordLayout.error = viewModel.errorTextOvservable.value
+            }
         }
     }
-
     private fun mailTextWatcher() {
         binding.mailEditText.doAfterTextChanged {
-            checkEmail()
+            viewModel.checkEmail(it.toString())
+            binding.textInputLayout.error = viewModel.errorTextOvservable.value
         }
     }
 
-    private fun checkEmail() {
-        val mail = binding.mailEditText.text.toString()
-        if (!mail.contains('@')) {
-            binding.textInputLayout.error = "Lütfen geçerli bir e-posta adresi giriniz."
-        } else {
-            binding.textInputLayout.error = null
-        }
-    }
 
-    private fun checkPassword() {
-        val password = binding.passwordEditText.text.toString()
-        if (password.length < 6) {
-            binding.passwordLayout.error = "Şifreniz minimum 6 karakterli olmalıdır."
-        } else {
-            binding.passwordLayout.error = null
-        }
-    }
 }

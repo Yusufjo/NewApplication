@@ -1,4 +1,4 @@
-package com.example.newapplication.fragment
+package com.example.newapplication.homePage.fragment.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,18 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.newapplication.R
-import com.example.newapplication.databinding.FragmentHomeBinding
+import com.example.newapplication.databinding.FragmentProfileBinding
 
 
-class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+class ProfileFragment : Fragment() {
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         return binding.root
     }
 }
+

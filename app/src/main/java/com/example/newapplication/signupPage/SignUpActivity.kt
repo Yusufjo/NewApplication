@@ -1,12 +1,16 @@
-package com.example.newapplication
+package com.example.newapplication.signupPage
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.newapplication.R
 import com.example.newapplication.databinding.ActivitySignUpBinding
 import com.example.newapplication.databinding.DialogLayoutBinding
 import com.example.newapplication.databinding.DialogNegativeBinding
@@ -14,55 +18,32 @@ import kotlin.random.Random
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    private lateinit var viewModel: SignUpActivityViewModel
     private val handler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel = ViewModelProvider(this)[SignUpActivityViewModel::class.java]
 
         singUpOnClickListeners()
         setTextWatchers()
 
     }
 
+
+
     private fun singUpOnClickListeners() {
         binding.singUp.setOnClickListener {
-            mailCheck()
-            passwordCheck()
-            passwordDoubleCheck()
-            showProgressBar()
+            val mail = binding.editTextTextEmailAddress2.text.toString()
+            val password = binding.editTextTextPassword.text.toString()
+            val password2 = binding.editTextTextPassword2.text.toString()
+            viewModel.mailCheck(mail)
+           viewModel.passwordCheck(password)
+            viewModel.passwordDoubleCheck(password,password2)
+           showProgressBar()
 
-        }
-    }
-
-
-    private fun mailCheck() {
-        val mail = binding.editTextTextEmailAddress2.text.toString()
-        if (!mail.contains('@')) {
-            binding.textInputLayout.error = "Lütfen geçerli bir e-posta adresi giriniz."
-        } else {
-            binding.textInputLayout.error = null
-        }
-    }
-
-    private fun passwordCheck() {
-        val password = binding.editTextTextPassword.text.toString()
-        if (password.length < 6) {
-            binding.passwordEditText.error = "Şifreniz minimum 6 karakterli olmalıdır."
-        } else {
-            binding.passwordEditText.error = null
-        }
-    }
-
-    private fun passwordDoubleCheck() {
-        val password2 = binding.editTextTextPassword2.text.toString()
-        val password = binding.editTextTextPassword.text.toString()
-        if (password != password2) {
-            binding.passwordEditTextConfirm.error =
-                "Şifreler aynı olmalıdır. Lütfen kontrol ederek tekrar deneyiniz."
-        } else {
-            binding.passwordEditTextConfirm.error = null
         }
     }
 
@@ -71,27 +52,31 @@ class SignUpActivity : AppCompatActivity() {
         passwordTextWatcher()
         confirmPasswordTextWatcher()
     }
-
-    private fun passwordTextWatcher() {
-        binding.editTextTextPassword.doAfterTextChanged {
-            passwordCheck()
-        }
-    }
-
     private fun mailTextWatcher() {
         binding.editTextTextEmailAddress2.doAfterTextChanged {
-            mailCheck()
+            viewModel.mailCheck(it.toString())
+            binding.textInputLayout.error = viewModel.errorTextObservable.value
         }
     }
-
+    private fun passwordTextWatcher() {
+        binding.editTextTextPassword.doAfterTextChanged {
+           viewModel.passwordCheck(it.toString())
+            binding.passwordEditText.error = viewModel.errorTextObservable.value
+        }
+    }
     private fun confirmPasswordTextWatcher() {
         binding.editTextTextPassword2.doAfterTextChanged {
-            passwordDoubleCheck()
+            val password = binding.editTextTextPassword.text.toString()
+            viewModel.passwordDoubleCheck(password,it.toString())
+            binding.passwordEditText.error = viewModel.errorTextObservable.value
         }
     }
 
     private fun showProgressBar() {
-        if (mailPasswordCheck()) {
+        val mail = binding.editTextTextEmailAddress2.text.toString()
+        val password = binding.editTextTextPassword.text.toString()
+        val password2 = binding.editTextTextPassword2.text.toString()
+        if (viewModel.mailPasswordCheck(mail,password,password2)) {
             binding.progressBar.visibility = View.VISIBLE
 
             handler.postDelayed({
@@ -137,15 +122,6 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
-    private fun mailPasswordCheck(): Boolean {
-        val mail = binding.editTextTextEmailAddress2.text.toString()
-        val password = binding.editTextTextPassword.text.toString()
-        val password2 = binding.editTextTextPassword2.text.toString()
-        if (mail.contains('@') && password.length >= 6 && password == password2) {
-            return true
-        }
-        return false
-    }
 
 
 }
