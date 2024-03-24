@@ -1,7 +1,9 @@
 package com.example.newapplication.signupPage
 
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.newapplication.databinding.DialogLayoutBinding
 
 class SignUpActivityViewModel: ViewModel() {
     val errorTextObservable = MutableLiveData<String?>()
@@ -39,5 +41,9 @@ class SignUpActivityViewModel: ViewModel() {
         }
         return false
          signUpControllerLiveData.value = false
+    }
+    private fun setDialog() {
+
+
     }
 }

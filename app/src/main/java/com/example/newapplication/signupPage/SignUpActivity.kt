@@ -68,7 +68,7 @@ class SignUpActivity : AppCompatActivity() {
         binding.editTextTextPassword2.doAfterTextChanged {
             val password = binding.editTextTextPassword.text.toString()
             viewModel.passwordDoubleCheck(password,it.toString())
-            binding.passwordEditText.error = viewModel.errorTextObservable.value
+            binding.passwordEditTextConfirm.error = viewModel.errorTextObservable.value
         }
     }
 
