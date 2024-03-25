@@ -24,11 +24,11 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
         val animation = h.lottieAnimationView
 
 
+        h.imageViewPost.setBackgroundResource(R.drawable.bg_raunded2)
 
             h.textViewUserName.text = post.user_name
 
         h.imageViewProfilePhoto.setImageResource(mContext.resources.getIdentifier(post.profile_photo,"drawable",mContext.packageName))
-        h.imageViewProfilePhoto.background = mContext.resources.getDrawable(R.drawable.bg_raunded2)
 
         h.imageViewPost.setImageResource(mContext.resources.getIdentifier(post.postPhoto,"drawable",mContext.packageName))
         h.textViewlikeSize.text = post.like_size.toString()
