@@ -21,10 +21,13 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val postList = ArrayList<Post>()
-        val p1 = Post(1,"huseyinAcıkgoz","huseyin",378,"huseyin")
-        val p2 = Post(2,"JoeFree__","yusuff",478,"yusuff")
+        val p1 = Post(1,"huseyinAcıkgoz","huseyin",378,"huseyinpp")
+        val p2 = Post(2,"JoeFree__","yusufpp",478,"yusuff")
+        val p3 = Post(3,"Onurcan.Ozdemir","onurcan",672,"onurcanpp")
         postList.add(p1)
         postList.add(p2)
+        postList.add(p3)
+
 
         val postAdapter  = HomeFragmentAdapter(requireContext(),postList)
         binding.RvPost.adapter = postAdapter
@@ -33,4 +36,5 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
 }

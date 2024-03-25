@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile_symbol" />
 
+
     <TextView
         android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:text="User Name"
+        android:textStyle="bold"
         android:textColor="@color/login"
         app:layout_constraintStart_toEndOf="@+id/imageViewProfilePhoto"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +50,21 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         app:srcCompat="@drawable/heartunlike" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="375dp"
+        android:layout_height="437dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.369"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/animation_json" />
+
     <ImageButton
         android:id="@+id/imageButtonLike"
         android:layout_width="63dp"
@@ -55,18 +72,19 @@
         android:layout_marginStart="20dp"
         android:backgroundTint="@android:color/transparent"
         android:scaleType="fitCenter"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         app:srcCompat="@drawable/like" />
 
     <ImageButton
         android:id="@+id/imageButtonComment"
-        android:layout_width="61dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="57dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="85dp"
         android:backgroundTint="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonLike"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
         app:srcCompat="@drawable/comment" />
 
@@ -75,16 +93,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:text="145"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/lora"
+        android:text="125"
+        android:textColor="@color/login"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonUnlike" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:fontFamily="@font/lora"
         android:text="Like's"
+        android:textColor="@color/login"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewlikeSize" />
 

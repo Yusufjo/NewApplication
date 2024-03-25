@@ -48,6 +48,7 @@
                 android:layout_marginBottom="16dp"
                 android:drawableStart="@drawable/baseline_email_24"
                 android:ems="10"
+                android:text="yusuf@gmail.com"
                 android:hint="@string/mail"
                 android:inputType="text"
                 android:textColorHighlight="@color/login"
@@ -77,6 +78,7 @@
                 android:layout_marginBottom="16dp"
                 android:drawableStart="@drawable/baseline_lock_24"
                 android:hint="@string/password"
+                android:text="123456"
                 android:inputType="textPassword"
                 android:textColorHighlight="@color/login" />
         </com.google.android.material.textfield.TextInputLayout>
