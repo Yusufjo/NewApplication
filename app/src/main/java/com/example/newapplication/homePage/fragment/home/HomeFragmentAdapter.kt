@@ -2,12 +2,10 @@ package com.example.newapplication.homePage.fragment.home
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
-import com.example.newapplication.R
 import com.example.newapplication.databinding.PostCardBinding
 
 class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
@@ -21,76 +19,90 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
 
     override fun onBindViewHolder(holder: PostCardHolder, position: Int) {
         val post = postList.get(position)
-        val h = holder.binding
-        val animation = h.lottieAnimationView
+        val animation = holder.binding.lottieAnimationView
 
+        holder.binding.run {
+            textViewUserName.text = post.user_name
 
-
-        h.textViewUserName.text = post.user_name
-
-        h.imageViewPost.setImageResource(
-            mContext.resources.getIdentifier(
-                post.profile_photo,
-                "drawable",
-                mContext.packageName
+            imageViewPost.setImageResource(
+                mContext.resources.getIdentifier(
+                    post.profile_photo,
+                    "drawable",
+                    mContext.packageName
+                )
             )
-        )
-
-        h.profileImage.setImageResource(
-            mContext.resources.getIdentifier(
-                post.postPhoto,
-                "drawable",
-                mContext.packageName
+            profileImage.setImageResource(
+                mContext.resources.getIdentifier(
+                    post.postPhoto,
+                    "drawable",
+                    mContext.packageName
+                )
             )
-        )
-        h.profileZoomImage.setImageResource(mContext.resources.getIdentifier(post.postPhoto,"drawable",mContext.packageName))
 
-        h.textViewlikeSize.text = post.like_size.toString()
+            profileZoomImage.setImageResource(
+                mContext.resources.getIdentifier(
+                    post.postPhoto, "drawable",
+                    mContext.packageName
+                )
+            )
+
+            textViewlikeSize.text = post.like_size.toString()
+        }
+
+
         var likeSizeTotal = post.like_size
 
 
-        fun profilePicture(){
-            h.profileImage.setOnClickListener{
-                h.profileZoomImage.visibility = View.VISIBLE
-            }
-            h.root.setOnClickListener {
-                if (h.profileZoomImage.visibility == View.VISIBLE){
-                    h.profileZoomImage.visibility = View.GONE
+        fun SetUpProfilePicture() {
+            holder.binding.run {
+                profileImage.setOnClickListener {
+                    profileZoomImage.visibility = View.VISIBLE
+                }
+                root.setOnClickListener {
+                    if (profileZoomImage.visibility == View.VISIBLE) {
+                        profileZoomImage.visibility = View.GONE
+                    }
                 }
             }
-        }
-        profilePicture()
 
-        fun likeButton() {
-            h.imageButtonUnlike.setOnClickListener {
-                h.imageButtonLike.visibility = View.VISIBLE
-                h.imageButtonUnlike.visibility = View.GONE
-                likeSizeTotal = likeSizeTotal + 1
-                h.textViewlikeSize.text = likeSizeTotal.toString()
-                animation.visibility = View.VISIBLE
-                animation.playAnimation()
-                animation.postDelayed({
-                    animation.cancelAnimation()
-                    animation.visibility = View.GONE
-                }, 1000)
+        }
+        SetUpProfilePicture()
+
+        fun SetLikeButton() {
+            holder.binding.run {
+                imageButtonUnlike.setOnClickListener {
+                    imageButtonLike.visibility = View.VISIBLE
+                    imageButtonUnlike.visibility = View.GONE
+                    likeSizeTotal = likeSizeTotal + 1
+                    textViewlikeSize.text = likeSizeTotal.toString()
+                    animation.visibility = View.VISIBLE
+                    animation.playAnimation()
+                    animation.postDelayed({
+                        animation.cancelAnimation()
+                        animation.visibility = View.GONE
+                    }, 1000)
+                }
+
             }
 
 
         }
 
-        fun unLikeButton() {
-            h.imageButtonLike.setOnClickListener {
-                h.imageButtonUnlike.visibility = View.VISIBLE
-                h.imageButtonLike.visibility = View.GONE
-                likeSizeTotal = likeSizeTotal - 1
-                h.textViewlikeSize.text = likeSizeTotal.toString()
+        fun SetUnLikeButton() {
+            holder.binding.run {
+                imageButtonLike.setOnClickListener {
+                    imageButtonUnlike.visibility = View.VISIBLE
+                    imageButtonLike.visibility = View.GONE
+                    likeSizeTotal = likeSizeTotal - 1
+                    textViewlikeSize.text = likeSizeTotal.toString()
+                }
+
             }
+
         }
 
-
-
-        likeButton()
-        unLikeButton()
+        SetLikeButton()
+        SetUnLikeButton()
 
     }
 

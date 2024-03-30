@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/searchRV"
         android:layout_width="392dp"
         android:layout_height="498dp"
         android:layout_marginStart="11dp"
@@ -31,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <SearchView
+        android:id="@+id/searchViewProfile"
         android:layout_width="389dp"
         android:layout_height="57dp"
         android:layout_marginStart="12dp"
