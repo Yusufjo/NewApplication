@@ -21,6 +21,7 @@ class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
 
     override fun onBindViewHolder(holder: SearchCardHolder, position: Int) {
         val search = searchList.get(position)
+        search
         holder.binding.run {
             textViewUserName.text = search.user_name
             profileImage.setImageResource(
@@ -31,7 +32,7 @@ class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
     }
 
     override fun getItemCount(): Int {
-return searchList.size   }
+return searchList.size  }
 
 
 }
