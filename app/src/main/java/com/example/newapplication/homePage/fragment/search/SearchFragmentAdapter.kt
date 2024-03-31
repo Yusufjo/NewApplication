@@ -5,17 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
-import com.example.newapplication.databinding.SearchCardBinding
+import com.example.newapplication.databinding.ItemSearchCardBinding
+
 
 class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
     RecyclerView.Adapter<SearchFragmentAdapter.SearchCardHolder>() {
 
 
-    inner class SearchCardHolder(var binding: SearchCardBinding) :
+    inner class SearchCardHolder(var binding: ItemSearchCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchCardHolder {
-        val binding = SearchCardBinding.inflate(LayoutInflater.from(mContext),parent,false)
+        val binding = ItemSearchCardBinding.inflate(LayoutInflater.from(mContext),parent,false)
         return SearchCardHolder(binding)
     }
 
@@ -23,10 +24,10 @@ class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
     override fun onBindViewHolder(holder: SearchCardHolder, position: Int) {
         val search = searchList.get(position)
         holder.binding.run {
-            textViewUserName.text = search.user_name
+            textViewUserName.text = search.userName
             profileImage.setImageResource(
                 mContext.resources.getIdentifier(
-                    search.profile_photo,"drawable",
+                    search.profilePhoto,"drawable",
                     mContext.packageName))
         }
     }

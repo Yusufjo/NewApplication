@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemPostCardBinding
-import com.example.newapplication.databinding.PostCardBinding
+
 
 class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
@@ -23,11 +23,11 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
         val post = postList.get(position)
 
         holder.binding.run {
-            textViewUserName.text = post.user_name
+            textViewUserName.text = post.userName
 
             imageViewPost.setImageResource(
                 mContext.resources.getIdentifier(
-                    post.profile_photo,
+                    post.profilePhoto,
                     "drawable",
                     mContext.packageName
                 )
@@ -47,7 +47,7 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
                 )
             )
 
-            textViewlikeSize.text = post.like_size.toString()
+            textViewlikeSize.text = post.likeSize.toString()
         }
 
         SetUpProfilePicture(holder)
@@ -70,8 +70,8 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
             imageButtonUnlike.setOnClickListener {
                 imageButtonLike.visibility = View.VISIBLE
                 imageButtonUnlike.visibility = View.GONE
-                post.like_size++
-                textViewlikeSize.text = post.like_size.toString()
+                post.likeSize++
+                textViewlikeSize.text = post.likeSize.toString()
 
                 animation.visibility = View.VISIBLE
                 animation.playAnimation()
@@ -91,8 +91,8 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
             imageButtonLike.setOnClickListener {
                 imageButtonUnlike.visibility = View.VISIBLE
                 imageButtonLike.visibility = View.GONE
-                post.like_size--
-                textViewlikeSize.text = post.like_size.toString()
+                post.likeSize--
+                textViewlikeSize.text = post.likeSize.toString()
 
             }
 

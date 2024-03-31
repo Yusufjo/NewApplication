@@ -26,10 +26,10 @@ class SearchFragmentViewModel: ViewModel() {
             val filteredList = ArrayList<Post>()
             for (i in searchList){
 
-                if(i.user_name.lowercase(Locale.ROOT).contains(query)){
+                if(i.userName.lowercase(Locale.ROOT).contains(query)){
                     filteredList.add(i)
                 }
-                else if (i.user_name.capitalize(Locale.ROOT).contains(query)){
+                else if (i.userName.capitalize(Locale.ROOT).contains(query)){
                     filteredList.add(i)
                 }
 

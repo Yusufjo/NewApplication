@@ -1,3 +1,3 @@
 package com.example.newapplication
 
-data class Post(var id: Int,var user_name:String, var profile_photo:String, var like_size: Int, var postPhoto:String)
+data class Post(var id: Int,var userName:String, var profilePhoto:String, var likeSize: Int, var postPhoto:String)
