@@ -6,15 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
+import com.example.newapplication.databinding.ItemPostCardBinding
 import com.example.newapplication.databinding.PostCardBinding
 
 class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
-    inner class PostCardHolder(var binding: PostCardBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class PostCardHolder(var binding: ItemPostCardBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostCardHolder {
-        val binding = PostCardBinding.inflate(LayoutInflater.from(mContext), parent, false)
+        val binding = ItemPostCardBinding.inflate(LayoutInflater.from(mContext), parent, false)
         return PostCardHolder(binding)
     }
 

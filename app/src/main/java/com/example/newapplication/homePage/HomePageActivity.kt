@@ -2,6 +2,7 @@ package com.example.newapplication.homePage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.newapplication.R
@@ -20,6 +21,7 @@ class HomePageActivity : AppCompatActivity() {
             navHostFragment.navController
         )
         val navController = navHostFragment.navController
+
     }
 }
 
