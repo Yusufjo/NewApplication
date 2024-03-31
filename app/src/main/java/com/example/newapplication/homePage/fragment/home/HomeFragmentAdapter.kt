@@ -11,11 +11,13 @@ import com.example.newapplication.databinding.ItemPostCardBinding
 
 class HomeFragmentAdapter(var postList: List<Post>) :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
-    inner class PostCardHolder(var binding: ItemPostCardBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class PostCardHolder(var binding: ItemPostCardBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostCardHolder {
-        val binding = ItemPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostCardHolder(binding)
     }
 
@@ -24,34 +26,18 @@ class HomeFragmentAdapter(var postList: List<Post>) :
 
         holder.binding.run {
             textViewUserName.text = post.userName
+            imageViewPost.setImageResource(post.postPhoto)
+            profileImage.setImageResource(post.profilePhoto)
+            profileZoomImage.setImageResource(post.profilePhoto)
 
-            imageViewPost.setImageResource(
-                imageViewPost.context.resources.
-                getIdentifier(post.postPhoto,
-                    "drawable", imageViewPost.
-                    context.packageName))
 
-            profileImage.setImageResource(
-                profileImage.context.resources.
-                getIdentifier(post.postPhoto,
-                    "drawable",profileImage.
-                    context.packageName)
-            )
-
-            profileZoomImage.setImageResource(
-                profileZoomImage.context.resources.getIdentifier(
-                    post.postPhoto, "drawable",
-                    profileZoomImage.context.packageName
-                )
-            )
 
             textViewlikeSize.text = post.likeSize.toString()
         }
 
         SetUpProfilePicture(holder)
-        SetLikeButton(holder,position)
+        SetLikeButton(holder, position)
         SetUnLikeButton(holder, position)
-
 
 
     }
@@ -60,7 +46,7 @@ class HomeFragmentAdapter(var postList: List<Post>) :
         return postList.size
     }
 
-    fun SetLikeButton(holder: PostCardHolder,position:Int) {
+    fun SetLikeButton(holder: PostCardHolder, position: Int) {
         val post = postList.get(position)
         val animation = holder.binding.lottieAnimationView
 

@@ -26,9 +26,7 @@ class SearchFragmentAdapter(var searchList: List<Post>) :
         holder.binding.run {
             textViewUserName.text = search.userName
             profileImage.setImageResource(
-                profileImage.context.resources.getIdentifier(
-                    search.profilePhoto,"drawable",
-                    profileImage.context.packageName))
+                search.profilePhoto)
         }
     }
 

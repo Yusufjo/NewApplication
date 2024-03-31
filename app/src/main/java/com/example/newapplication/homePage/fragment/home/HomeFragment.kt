@@ -21,11 +21,11 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val postList = listOf<Post>(Post(1,"huseyinAcıkgoz","huseyin",378,"huseyinpp"),
-            Post(2,"JoeFree__","yusufpp",478,"yusuff"),
-            Post(3,"Onurcan.Ozdemir","onurcan",672,"onurcanpp"))
+        val postList = listOf<Post>(Post(1,"huseyinAcıkgoz",R.drawable.huseyin,378,R.drawable.huseyinpp),
+            Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
+            Post(3,"Onurcan.Ozdemir",R.drawable.onurcan,672,R.drawable.onurcanpp))
 
-        val postAdapter  = HomeFragmentAdapter(requireContext(),postList)
+        val postAdapter  = HomeFragmentAdapter(postList)
         binding.RvPost.adapter = postAdapter
 
 

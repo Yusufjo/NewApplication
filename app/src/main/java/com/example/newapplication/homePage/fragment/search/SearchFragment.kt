@@ -50,7 +50,7 @@ class SearchFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.searchListLiveData.observe(viewLifecycleOwner) {
-            val searchAdapter = SearchFragmentAdapter(requireContext(), it)
+            val searchAdapter = SearchFragmentAdapter(it)
             binding.searchRV.adapter = searchAdapter
         }
     }
