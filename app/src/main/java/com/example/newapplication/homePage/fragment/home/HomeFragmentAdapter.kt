@@ -9,13 +9,13 @@ import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemPostCardBinding
 
 
-class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
+class HomeFragmentAdapter(var postList: List<Post>) :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
     inner class PostCardHolder(var binding: ItemPostCardBinding) : RecyclerView.ViewHolder(binding.root)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostCardHolder {
-        val binding = ItemPostCardBinding.inflate(LayoutInflater.from(mContext), parent, false)
+        val binding = ItemPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostCardHolder(binding)
     }
 
@@ -26,24 +26,22 @@ class HomeFragmentAdapter(var mContext: Context, var postList: List<Post>) :
             textViewUserName.text = post.userName
 
             imageViewPost.setImageResource(
-                mContext.resources.getIdentifier(
-                    post.profilePhoto,
-                    "drawable",
-                    mContext.packageName
-                )
-            )
+                imageViewPost.context.resources.
+                getIdentifier(post.postPhoto,
+                    "drawable", imageViewPost.
+                    context.packageName))
+
             profileImage.setImageResource(
-                mContext.resources.getIdentifier(
-                    post.postPhoto,
-                    "drawable",
-                    mContext.packageName
-                )
+                profileImage.context.resources.
+                getIdentifier(post.postPhoto,
+                    "drawable",profileImage.
+                    context.packageName)
             )
 
             profileZoomImage.setImageResource(
-                mContext.resources.getIdentifier(
+                profileZoomImage.context.resources.getIdentifier(
                     post.postPhoto, "drawable",
-                    mContext.packageName
+                    profileZoomImage.context.packageName
                 )
             )
 
