@@ -8,7 +8,7 @@ import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemSearchCardBinding
 
 
-class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
+class SearchFragmentAdapter(var searchList: List<Post>) :
     RecyclerView.Adapter<SearchFragmentAdapter.SearchCardHolder>() {
 
 
@@ -16,7 +16,7 @@ class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchCardHolder {
-        val binding = ItemSearchCardBinding.inflate(LayoutInflater.from(mContext),parent,false)
+        val binding = ItemSearchCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SearchCardHolder(binding)
     }
 
@@ -26,9 +26,9 @@ class SearchFragmentAdapter(var mContext: Context, var searchList: List<Post>) :
         holder.binding.run {
             textViewUserName.text = search.userName
             profileImage.setImageResource(
-                mContext.resources.getIdentifier(
+                profileImage.context.resources.getIdentifier(
                     search.profilePhoto,"drawable",
-                    mContext.packageName))
+                    profileImage.context.packageName))
         }
     }
 
