@@ -21,7 +21,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val postList = listOf<Post>(
             Post(1, "huseyinAcıkgoz", R.drawable.huseyin, 378, R.drawable.huseyinpp),
             Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
@@ -31,8 +34,6 @@ class HomeFragment : Fragment() {
         homeAdapter = HomeFragmentAdapter(postList)
         binding.RvPost.adapter = homeAdapter
         binding.RvPost.layoutManager = LinearLayoutManager(requireContext())
-
-        return binding.root
     }
 
 

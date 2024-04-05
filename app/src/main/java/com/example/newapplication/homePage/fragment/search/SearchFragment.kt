@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newapplication.databinding.FragmentSearchBinding
 
 
-
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var  searchAdapter: SearchFragmentAdapter
+    private lateinit var searchAdapter: SearchFragmentAdapter
     private val viewModel: SearchFragmentViewModel by viewModels()
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         observeViewModel()
         viewModel.initSearchList()
@@ -36,14 +39,9 @@ class SearchFragment : Fragment() {
                 viewModel.filterList(newText)
                 return true
             }
-
-
         })
-
-
         binding.searchRV.layoutManager = LinearLayoutManager(requireContext())
 
-        return binding.root
     }
 
     private fun observeViewModel() {
