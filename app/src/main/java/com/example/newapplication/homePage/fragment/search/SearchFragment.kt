@@ -6,18 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.newapplication.Post
-import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentSearchBinding
-import java.util.Locale
+
 
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
+    private lateinit var  searchAdapter: SearchFragmentAdapter
     private val viewModel: SearchFragmentViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +24,7 @@ class SearchFragment : Fragment() {
 
         observeViewModel()
         viewModel.initSearchList()
+        viewModel.initAdapter()
 
 
         binding.searchViewProfile.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -50,7 +48,7 @@ class SearchFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.searchListLiveData.observe(viewLifecycleOwner) {
-            val searchAdapter = SearchFragmentAdapter(it)
+            searchAdapter = SearchFragmentAdapter(it)
             binding.searchRV.adapter = searchAdapter
         }
     }

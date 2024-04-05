@@ -16,6 +16,7 @@ import com.example.newapplication.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private lateinit var postAdapter: ProfileFragmentAdapter
     private val viewModel: ProfileFragmentViewModel by viewModels()
 
 
@@ -29,15 +30,13 @@ class ProfileFragment : Fragment() {
             Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusufpp),
             Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.onurcan))
         binding.profileImage.setImageResource(postList[2].profilePhoto)
+        binding.textViewPostSize.text = postList.size.toString()
+        binding.textViewUserName.text = postList[1].userName
 
 
-        val postAdapter = ProfileFragmentAdapter(postList)
-
-
-
-
+        postAdapter = ProfileFragmentAdapter(postList)
         binding.RvPosts.adapter = postAdapter
-        binding.RvPosts.layoutManager = GridLayoutManager(context,3)
+        binding.RvPosts.layoutManager = GridLayoutManager(context,postList.size)
 
         return binding.root
     }

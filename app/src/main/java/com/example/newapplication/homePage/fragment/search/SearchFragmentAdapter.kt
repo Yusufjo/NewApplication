@@ -3,6 +3,7 @@ package com.example.newapplication.homePage.fragment.search
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemSearchCardBinding
@@ -28,7 +29,10 @@ class SearchFragmentAdapter(var searchList: List<Post>) :
             profileImage.setImageResource(
                 search.profilePhoto)
         }
+
+
     }
+
 
     override fun getItemCount(): Int {
 return searchList.size  }

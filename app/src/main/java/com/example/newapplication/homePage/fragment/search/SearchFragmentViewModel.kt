@@ -1,5 +1,6 @@
 package com.example.newapplication.homePage.fragment.search
 
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,6 +9,7 @@ import com.example.newapplication.R
 import java.util.Locale
 
 class SearchFragmentViewModel: ViewModel() {
+    private lateinit var searchAdapter: SearchFragmentAdapter
 
     val searchListLiveData = MutableLiveData<List<Post>>()
 
@@ -19,6 +21,10 @@ class SearchFragmentViewModel: ViewModel() {
 
     fun initSearchList(){
         searchListLiveData.value = searchList
+    }
+
+    fun initAdapter(){
+        searchAdapter = SearchFragmentAdapter(searchList)
     }
 
 
@@ -41,4 +47,6 @@ class SearchFragmentViewModel: ViewModel() {
         }
 
     }
+
+
 }

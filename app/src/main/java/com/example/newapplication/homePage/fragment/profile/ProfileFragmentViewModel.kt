@@ -2,11 +2,18 @@ package com.example.newapplication.homePage.fragment.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.newapplication.Post
+import com.example.newapplication.R
 
 class ProfileFragmentViewModel : ViewModel() {
-    val  profileUserNameLiveData = MutableLiveData<String>()
+    val  profilePostSizeLiveData = MutableLiveData<String>()
 
-    fun setProfileUserName(userName:String){
-        userName
+    val postList = listOf<Post>( Post(2,"JoeFree__", R.drawable.yusufpp,478, R.drawable.yusuff),
+        Post(2,"JoeFree__", R.drawable.yusufpp,478, R.drawable.yusufpp),
+        Post(2,"JoeFree__", R.drawable.yusufpp,478, R.drawable.onurcan)
+    )
+
+    fun setProfilePostSize(){
+        profilePostSizeLiveData.value = postList.size.toString()
     }
 }

@@ -14,22 +14,22 @@ import com.example.newapplication.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel:HomeFragmentViewModel by viewModels()
+    private lateinit var homeAdapter: HomeFragmentAdapter
+    private val viewModel: HomeFragmentViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val postList = listOf<Post>(Post(1,"huseyinAcıkgoz",R.drawable.huseyin,378,R.drawable.huseyinpp),
-            Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
-            Post(3,"Onurcan.Ozdemir",R.drawable.onurcan,672,R.drawable.onurcanpp))
+        val postList = listOf<Post>(
+            Post(1, "huseyinAcıkgoz", R.drawable.huseyin, 378, R.drawable.huseyinpp),
+            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
+            Post(3, "Onurcan.Ozdemir", R.drawable.onurcan, 672, R.drawable.onurcanpp)
+        )
 
-        val postAdapter  = HomeFragmentAdapter(postList)
-        binding.RvPost.adapter = postAdapter
-
-
-
+        homeAdapter = HomeFragmentAdapter(postList)
+        binding.RvPost.adapter = homeAdapter
         binding.RvPost.layoutManager = LinearLayoutManager(requireContext())
 
         return binding.root

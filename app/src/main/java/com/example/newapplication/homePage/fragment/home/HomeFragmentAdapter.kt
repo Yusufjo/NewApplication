@@ -1,6 +1,5 @@
 package com.example.newapplication.homePage.fragment.home
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,18 +34,16 @@ class HomeFragmentAdapter(var postList: List<Post>) :
             textViewlikeSize.text = post.likeSize.toString()
         }
 
-        SetUpProfilePicture(holder)
-        SetLikeButton(holder, position)
-        SetUnLikeButton(holder, position)
-
-
+        setUpProfilePicture(holder)
+        setLikeButton(holder, position)
+        setUnLikeButton(holder, position)
     }
 
     override fun getItemCount(): Int {
         return postList.size
     }
 
-    fun SetLikeButton(holder: PostCardHolder, position: Int) {
+    fun setLikeButton(holder: PostCardHolder, position: Int) {
         val post = postList.get(position)
         val animation = holder.binding.lottieAnimationView
 
@@ -69,7 +66,7 @@ class HomeFragmentAdapter(var postList: List<Post>) :
         }
     }
 
-    fun SetUnLikeButton(holder: PostCardHolder, position: Int) {
+    fun setUnLikeButton(holder: PostCardHolder, position: Int) {
         val post = postList.get(position)
         holder.binding.run {
             imageButtonLike.setOnClickListener {
@@ -84,7 +81,7 @@ class HomeFragmentAdapter(var postList: List<Post>) :
 
     }
 
-    fun SetUpProfilePicture(holder: HomeFragmentAdapter.PostCardHolder) {
+    fun setUpProfilePicture(holder: HomeFragmentAdapter.PostCardHolder) {
         holder.binding.run {
             profileImage.setOnClickListener {
                 profileZoomImage.visibility = View.VISIBLE
