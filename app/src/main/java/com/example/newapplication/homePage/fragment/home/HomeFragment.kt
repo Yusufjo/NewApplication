@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newapplication.Post
 import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentHomeBinding
+import com.example.newapplication.homePage.data.PostData
 
 
 class HomeFragment : Fragment() {

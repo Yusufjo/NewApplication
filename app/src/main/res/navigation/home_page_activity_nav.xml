@@ -14,10 +14,27 @@
         android:id="@+id/profileFragment"
         android:name="com.example.newapplication.homePage.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_linearPostsFragment"
+            app:destination="@id/linearPostsFragment" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.newapplication.homePage.fragment.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/linearPostsFragment"
+        android:name="com.example.newapplication.homePage.fragment.profile.LinearPostsFragment"
+        android:label="fragment_linear_posts"
+        tools:layout="@layout/fragment_linear_posts" />
 </navigation>
