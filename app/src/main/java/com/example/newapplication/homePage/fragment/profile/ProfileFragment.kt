@@ -25,6 +25,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -35,7 +36,6 @@ class ProfileFragment : Fragment() {
         binding.profileImage.setImageResource(postList[2].profilePhoto)
         binding.textViewPostSize.text = postList.size.toString()
         binding.textViewUserName.text = postList[1].userName
-
 
         postAdapter = ProfileFragmentAdapter(postList)
         binding.RvPosts.adapter = postAdapter

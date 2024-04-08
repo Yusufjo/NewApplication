@@ -11,9 +11,9 @@ import java.util.Locale
 class SearchFragmentViewModel: ViewModel() {
     private lateinit var searchAdapter: SearchFragmentAdapter
 
-    val searchListLiveData = MutableLiveData<List<Post>>()
+    val searchListLiveData = MutableLiveData<MutableList<Post>>()
 
-    val searchList = listOf<Post>(
+    var searchList = mutableListOf<Post>(
         Post(1,"huseyinAcıkgoz", R.drawable.huseyin,378,R.drawable.huseyinpp),
         Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
         Post(3,"Onurcan.Ozdemir",R.drawable.onurcan,672,R.drawable.onurcanpp)
@@ -24,7 +24,7 @@ class SearchFragmentViewModel: ViewModel() {
     }
 
     fun initAdapter(){
-        searchAdapter = SearchFragmentAdapter(searchList)
+        searchAdapter = SearchFragmentAdapter()
     }
 
 

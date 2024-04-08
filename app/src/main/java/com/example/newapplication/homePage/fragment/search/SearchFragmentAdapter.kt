@@ -9,9 +9,9 @@ import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemSearchCardBinding
 
 
-class SearchFragmentAdapter(var searchList: List<Post>) :
+class SearchFragmentAdapter :
     RecyclerView.Adapter<SearchFragmentAdapter.SearchCardHolder>() {
-
+    var searchList = mutableListOf<Post>()
 
     inner class SearchCardHolder(var binding: ItemSearchCardBinding) :
         RecyclerView.ViewHolder(binding.root)

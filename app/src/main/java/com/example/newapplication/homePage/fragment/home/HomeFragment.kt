@@ -21,6 +21,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -30,7 +31,6 @@ class HomeFragment : Fragment() {
             Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
             Post(3, "Onurcan.Ozdemir", R.drawable.onurcan, 672, R.drawable.onurcanpp)
         )
-
         homeAdapter = HomeFragmentAdapter(postList)
         binding.RvPost.adapter = homeAdapter
         binding.RvPost.layoutManager = LinearLayoutManager(requireContext())

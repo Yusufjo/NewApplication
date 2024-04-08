@@ -19,7 +19,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-
+        searchAdapter = SearchFragmentAdapter()
         return binding.root
     }
 
@@ -46,8 +46,8 @@ class SearchFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.searchListLiveData.observe(viewLifecycleOwner) {
-            searchAdapter = SearchFragmentAdapter(it)
             binding.searchRV.adapter = searchAdapter
+            searchAdapter.searchList = it
         }
     }
 

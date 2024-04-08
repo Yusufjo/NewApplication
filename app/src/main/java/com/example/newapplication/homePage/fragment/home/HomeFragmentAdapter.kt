@@ -10,6 +10,7 @@ import com.example.newapplication.databinding.ItemPostCardBinding
 
 class HomeFragmentAdapter(var postList: List<Post>) :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
+
     inner class PostCardHolder(var binding: ItemPostCardBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -28,9 +29,6 @@ class HomeFragmentAdapter(var postList: List<Post>) :
             imageViewPost.setImageResource(post.postPhoto)
             profileImage.setImageResource(post.profilePhoto)
             profileZoomImage.setImageResource(post.profilePhoto)
-
-
-
             textViewlikeSize.text = post.likeSize.toString()
         }
 
@@ -81,7 +79,7 @@ class HomeFragmentAdapter(var postList: List<Post>) :
 
     }
 
-    fun setUpProfilePicture(holder: HomeFragmentAdapter.PostCardHolder) {
+    fun setUpProfilePicture(holder: PostCardHolder) {
         holder.binding.run {
             profileImage.setOnClickListener {
                 profileZoomImage.visibility = View.VISIBLE

@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemProfileCardBinding
 
-class ProfileFragmentAdapter(var postListProfile : List<Post>) : RecyclerView.Adapter<ProfileFragmentAdapter.ProfilePostCardHolder>(){
+class ProfileFragmentAdapter(var postListProfile: List<Post>) : RecyclerView.Adapter<ProfileFragmentAdapter.ProfilePostCardHolder>(){
+
     inner class ProfilePostCardHolder(var binding : ItemProfileCardBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfilePostCardHolder {
