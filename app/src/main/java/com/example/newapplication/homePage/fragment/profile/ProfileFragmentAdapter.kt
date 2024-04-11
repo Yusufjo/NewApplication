@@ -7,7 +7,7 @@ import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemProfileCardBinding
 
 class ProfileFragmentAdapter(var postListProfile: List<Post>) : RecyclerView.Adapter<ProfileFragmentAdapter.ProfilePostCardHolder>(){
-
+    var onPostClickListener: OnPostClickListener? = null
     inner class ProfilePostCardHolder(var binding : ItemProfileCardBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfilePostCardHolder {
@@ -20,11 +20,18 @@ class ProfileFragmentAdapter(var postListProfile: List<Post>) : RecyclerView.Ada
         val post = postListProfile.get(position)
         holder.binding.run {
             imageView3.setImageResource(post.postPhoto)
+            root.setOnClickListener {
+                onPostClickListener?.onPostClick()
+            }
         }
     }
 
 
     override fun getItemCount(): Int {
       return  postListProfile.size
+    }
+
+    interface OnPostClickListener {
+        fun onPostClick()
     }
 }

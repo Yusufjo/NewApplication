@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newapplication.Post
 import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentProfileBinding
+import com.example.newapplication.homePage.fragment.search.SearchFragment
 
 
 class ProfileFragment : Fragment() {
@@ -30,16 +31,32 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val postList = listOf<Post>( Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
-            Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusufpp),
-            Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.onurcan))
-        binding.profileImage.setImageResource(postList[2].profilePhoto)
-        binding.textViewPostSize.text = postList.size.toString()
-        binding.textViewUserName.text = postList[1].userName
+        val postList = listOf<Post>(
+            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
+            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusufpp),
+            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.onurcan)
+        )
 
+        val bundle = arguments
+        val profilePhoto = bundle?.getInt("profilephoto")
         postAdapter = ProfileFragmentAdapter(postList)
-        binding.RvPosts.adapter = postAdapter
-        binding.RvPosts.layoutManager = GridLayoutManager(context,postList.size)
+        postAdapter.onPostClickListener = object : ProfileFragmentAdapter.OnPostClickListener {
+            override fun onPostClick() {
+                if (bundle != null) {
+
+                }
+
+            }
+        }
+
+            profilePhoto?.let { binding.profileImage.setImageResource(it) }
+            binding.textViewPostSize.text = postList.size.toString()
+            binding.textViewUserName.text = bundle?.getString("username")
+
+            binding.RvPosts.adapter = postAdapter
+            binding.RvPosts.layoutManager = GridLayoutManager(context, postList.size)
+
+
     }
 }
 

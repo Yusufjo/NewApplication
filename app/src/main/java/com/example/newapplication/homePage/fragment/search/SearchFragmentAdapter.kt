@@ -1,11 +1,14 @@
 package com.example.newapplication.homePage.fragment.search
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
+import com.example.newapplication.R
 import com.example.newapplication.databinding.ItemSearchCardBinding
 
 
@@ -28,6 +31,12 @@ class SearchFragmentAdapter :
             textViewUserName.text = search.userName
             profileImage.setImageResource(
                 search.profilePhoto)
+            root.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putString("username",search.userName)
+                bundle.putInt("profilephoto",search.profilePhoto)
+                it.findNavController().navigate(R.id.action_searchFragment_to_profileFragment, bundle)
+            }
         }
 
 
