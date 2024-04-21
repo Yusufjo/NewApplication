@@ -50,14 +50,6 @@ class ProfileFragment : Fragment() {
                 if (bundle != null) {
                     val homeFragment = HomeFragment()
 
-                    // Hedef fragmentı açmak için bir transaction başlatın
-                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
-
-                    // Hedef fragmentı ekleyin ve geri tuşuna basıldığında geri alınmasını sağlayın
-                                        transaction.addToBackStack(null)
-
-                    // Transaction'ı commit edin
-                    transaction.commit()
                 }
 
             }
