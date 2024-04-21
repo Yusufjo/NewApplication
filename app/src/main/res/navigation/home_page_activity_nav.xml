@@ -23,8 +23,8 @@
             android:name="post"
             app:argType="com.example.newapplication.Post" />
         <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_profileFragment_to_postFragment"
+            app:destination="@id/postFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -45,6 +45,15 @@
         tools:layout="@layout/fragment_search_profile" >
         <argument
             android:name="profile"
+            app:argType="com.example.newapplication.Post" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.newapplication.homePage.fragment.post.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <argument
+            android:name="posts"
             app:argType="com.example.newapplication.Post" />
     </fragment>
 </navigation>
