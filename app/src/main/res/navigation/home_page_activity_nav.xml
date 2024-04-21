@@ -9,19 +9,42 @@
         android:id="@+id/homeFragment"
         android:name="com.example.newapplication.homePage.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="postClick"
+            app:argType="com.example.newapplication.Post" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.newapplication.homePage.fragment.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="post"
+            app:argType="com.example.newapplication.Post" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.newapplication.homePage.fragment.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_searchFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_searchFragment_to_searchProfileFragment"
+            app:destination="@id/searchProfileFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchProfileFragment2"
+            app:destination="@id/searchProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchProfileFragment"
+        android:name="com.example.newapplication.homePage.fragment.searchProfile.SearchProfileFragment"
+        android:label="fragment_search_profile"
+        tools:layout="@layout/fragment_search_profile" >
+        <argument
+            android:name="profile"
+            app:argType="com.example.newapplication.Post" />
     </fragment>
 </navigation>

@@ -14,9 +14,9 @@ class SearchFragmentViewModel: ViewModel() {
     val searchListLiveData = MutableLiveData<MutableList<Post>>()
 
     var searchList = mutableListOf<Post>(
-        Post(1,"huseyinAcıkgoz", R.drawable.huseyin,378,R.drawable.huseyinpp),
-        Post(2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
-        Post(3,"Onurcan.Ozdemir",R.drawable.onurcan,672,R.drawable.onurcanpp)
+        Post("Hüseyin",1,"huseyinAcıkgoz", R.drawable.huseyin,378,R.drawable.huseyinpp),
+        Post("Yusuf",2,"JoeFree__",R.drawable.yusufpp,478,R.drawable.yusuff),
+        Post("Onurcan Ozdemir",3,"Onurcan.Ozdemir",R.drawable.onurcan,672,R.drawable.onurcanpp)
     )
 
     fun initSearchList(){

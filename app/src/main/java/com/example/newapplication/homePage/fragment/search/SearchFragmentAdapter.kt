@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
@@ -32,10 +33,10 @@ class SearchFragmentAdapter :
             profileImage.setImageResource(
                 search.profilePhoto)
             root.setOnClickListener {
-                val bundle = Bundle()
-                bundle.putString("username",search.userName)
-                bundle.putInt("profilephoto",search.profilePhoto)
-                it.findNavController().navigate(R.id.action_searchFragment_to_profileFragment, bundle)
+
+                val bundle = SearchFragmentDirections.actionSearchFragmentToSearchProfileFragment2(profile = search)
+                Navigation.findNavController(it).navigate(bundle)
+
             }
         }
 

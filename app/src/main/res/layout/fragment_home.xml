@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".homePage.fragment.home.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -12,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="85dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/login"
+        android:backgroundTint="@color/backround"
         app:title="Home Page"
         app:titleTextColor="@color/white"
         android:minHeight="?attr/actionBarSize"
@@ -23,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RvPost"
+        android:id="@+id/RvPosts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

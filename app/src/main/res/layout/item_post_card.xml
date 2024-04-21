@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -28,7 +29,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="32dp"
         android:text="User Name"
-        android:textColor="@color/login"
+        android:textColor="@color/text"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,14 +98,15 @@
 
     <ImageButton
         android:id="@+id/imageButtonComment"
-        android:layout_width="57dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="85dp"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="2dp"
         android:backgroundTint="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost"
-        app:srcCompat="@drawable/comment" />
+        app:srcCompat="@drawable/commenticon" />
 
     <TextView
         android:id="@+id/textViewlikeSize"
@@ -114,7 +116,7 @@
         android:layout_marginTop="64dp"
         android:fontFamily="@font/lora"
         android:text="125"
-        android:textColor="@color/login"
+        android:textColor="@color/text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageViewPost" />
@@ -126,7 +128,7 @@
         android:layout_marginStart="20dp"
         android:fontFamily="@font/lora"
         android:text="Like's"
-        android:textColor="@color/login"
+        android:textColor="@color/text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewlikeSize" />

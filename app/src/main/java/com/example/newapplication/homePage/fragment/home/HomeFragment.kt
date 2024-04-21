@@ -27,13 +27,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val postList = listOf<Post>(
-            Post(1, "huseyinAcıkgoz", R.drawable.huseyin, 378, R.drawable.huseyinpp),
-            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
-            Post(3, "Onurcan.Ozdemir", R.drawable.onurcan, 672, R.drawable.onurcanpp)
+            Post("Hüseyin",1, "huseyinAcıkgoz", R.drawable.huseyin, 378, R.drawable.huseyinpp),
+            Post("Yusuf",2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
+            Post("Onurcan Özdemir",3, "Onurcan.Ozdemir", R.drawable.onurcan, 672, R.drawable.onurcanpp)
         )
         homeAdapter = HomeFragmentAdapter(postList)
-        binding.RvPost.adapter = homeAdapter
-        binding.RvPost.layoutManager = LinearLayoutManager(requireContext())
+        binding.RvPosts.adapter = homeAdapter
+        binding.RvPosts.layoutManager = LinearLayoutManager(requireContext())
     }
 
 

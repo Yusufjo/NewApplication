@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newapplication.Post
 import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentProfileBinding
-import com.example.newapplication.homePage.fragment.search.SearchFragment
+import com.example.newapplication.homePage.fragment.home.HomeFragment
 
 
 class ProfileFragment : Fragment() {
@@ -31,30 +29,43 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val postList = listOf<Post>(
-            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
-            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusufpp),
-            Post(2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.onurcan)
-        )
 
-        val bundle = arguments
+        val postList = listOf<Post>(
+            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
+            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusufpp),
+            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.onurcan)
+        )
+        binding.run {
+            profileImage.setImageResource(R.drawable.yusufpp)
+            textViewPostSize.text = postList.size.toString()
+            textViewUserName.text = postList[1].userName
+            textViewName.text = postList[0].name
+        }
+
+        val bundle = Bundle()
         val profilePhoto = bundle?.getInt("profilephoto")
         postAdapter = ProfileFragmentAdapter(postList)
         postAdapter.onPostClickListener = object : ProfileFragmentAdapter.OnPostClickListener {
             override fun onPostClick() {
                 if (bundle != null) {
+                    val homeFragment = HomeFragment()
 
+                    // Hedef fragmentı açmak için bir transaction başlatın
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+
+                    // Hedef fragmentı ekleyin ve geri tuşuna basıldığında geri alınmasını sağlayın
+                                        transaction.addToBackStack(null)
+
+                    // Transaction'ı commit edin
+                    transaction.commit()
                 }
 
             }
         }
 
-            profilePhoto?.let { binding.profileImage.setImageResource(it) }
-            binding.textViewPostSize.text = postList.size.toString()
-            binding.textViewUserName.text = bundle?.getString("username")
-
-            binding.RvPosts.adapter = postAdapter
-            binding.RvPosts.layoutManager = GridLayoutManager(context, postList.size)
+        postAdapter = ProfileFragmentAdapter(postList)
+        binding.Rv.adapter = postAdapter
+        binding.Rv.layoutManager = GridLayoutManager(context, postList.size)
 
 
     }

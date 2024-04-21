@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="85dp"
         android:background="?attr/colorPrimary"
-        android:backgroundTint="@color/login"
+        android:backgroundTint="@color/backround"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,12 +31,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:text="Yusuf"
+        android:textColor="@color/text"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/text"
         android:text="24"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
@@ -61,9 +63,10 @@
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         android:background="@null"
+        android:textColor="@color/text"
         android:text="Akdeniz Üniversitesi / İzmir/Trablus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
     <TextView
         android:id="@+id/textView16"
@@ -73,8 +76,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/post"
         android:textStyle="bold"
-        android:gravity="center
-"
+        android:gravity="center"
+        android:textColor="@color/text"
         app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toBottomOf="@+id/textViewPostSize" />
 
@@ -86,6 +89,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="62dp"
         android:text="550"
+        android:textColor="@color/text"
         app:layout_constraintEnd_toStartOf="@+id/textViewFollowingSize"
         app:layout_constraintStart_toEndOf="@+id/textViewPostSize"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
@@ -97,6 +101,7 @@
         android:layout_marginStart="62dp"
         android:layout_marginTop="20dp"
         android:text="332"
+        android:textColor="@color/text"
         app:layout_constraintStart_toEndOf="@+id/textViewFollowersSize"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
@@ -108,6 +113,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/followers"
         android:textStyle="bold"
+        android:textColor="@color/text"
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/textViewFollowersSize" />
@@ -120,8 +126,8 @@
         android:layout_marginTop="8dp"
         android:text="@string/following"
         android:textStyle="bold"
-        android:gravity="center
-"
+        android:gravity="center"
+        android:textColor="@color/text"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textViewFollowingSize" />
 
@@ -130,21 +136,11 @@
         android:layout_width="143dp"
         android:layout_height="40dp"
         android:layout_marginTop="35dp"
-        android:backgroundTint="@color/login"
+        android:backgroundTint="@color/backround"
         android:text="@string/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EditText" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RvPosts"
-        android:layout_width="412dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
 
     <TextView
         android:id="@+id/textViewUserName"
@@ -159,5 +155,15 @@
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="@+id/toolbar4"
         app:layout_constraintTop_toTopOf="@+id/toolbar4" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEdit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
