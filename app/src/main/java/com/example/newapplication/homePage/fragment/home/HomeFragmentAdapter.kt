@@ -59,8 +59,6 @@ class HomeFragmentAdapter(var postList: List<Post>) :
                     animation.visibility = View.GONE
                 }, 1000)
             }
-
-
         }
     }
 
