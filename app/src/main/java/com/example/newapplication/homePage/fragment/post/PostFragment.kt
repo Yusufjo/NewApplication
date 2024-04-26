@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.newapplication.Post
 import com.example.newapplication.PostData
 import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentPostBinding
@@ -24,10 +27,16 @@ class PostFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val bundle:PostFragmentArgs by navArgs()
+        val post = bundle.posts
         val postList = PostData.yusufPost
+
 
         postAdapter = PostAdapter(postList)
         binding.postsView.adapter = postAdapter
         binding.postsView.layoutManager = LinearLayoutManager(requireContext())
+
+
+
     }
 }

@@ -20,6 +20,13 @@ class PostAdapter(var postlists: List<Post>) : RecyclerView.Adapter<PostAdapter.
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val posts = postlists.get(position)
+        holder.binding.run {
+            imageViewPost.setImageResource(posts.postPhoto)
+            profileImage.setImageResource(posts.profilePhoto)
+            textViewUserName.text = posts.userName
+            profileZoomImage.setImageResource(posts.profilePhoto)
+            textViewlikeSize.text = posts.likeSize.toString()
+        }
 
     }
 

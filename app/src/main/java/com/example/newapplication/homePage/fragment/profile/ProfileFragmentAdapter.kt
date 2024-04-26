@@ -23,7 +23,7 @@ class ProfileFragmentAdapter(var postListProfile: List<Post>) : RecyclerView.Ada
         holder.binding.run {
             imageView3.setImageResource(post.postPhoto)
              root.setOnClickListener {
-                 onPostClickListener?.onPostClick()
+            //     onPostClickListener?.onPostClick()
                  val bundle = ProfileFragmentDirections.actionProfileFragmentToPostFragment(post)
                  Navigation.findNavController(it).navigate(bundle)
              }

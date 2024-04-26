@@ -1,4 +1,3 @@
-
 package com.example.newapplication.homePage.fragment.searchProfile
 
 import android.os.Bundle
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.newapplication.Post
+import com.example.newapplication.PostData
 import com.example.newapplication.R
 import com.example.newapplication.databinding.FragmentSearchProfileBinding
 
@@ -25,14 +25,25 @@ class SearchProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val bundle: SearchProfileFragmentArgs by navArgs()
         val profile = bundle.profile
 
-        val postList = listOf<Post>(
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusufpp),
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.onurcan)
-        )
+        val postList = when (profile.userName) {
+            "JoeFree__" -> PostData.yusufPost
+            "Onurcan.Ozdemir" -> PostData.onurcanPost
+            "huseyinAcıkgoz" -> PostData.huseyinPost
+            else -> PostData.yusufPost
+        }
+
+
+//        val postList = if (binding.textViewUserName.text == "huseyinAcıkgoz"){
+//            PostData.huseyinPost
+//        }
+//        else if (binding.textViewUserName.text == "onurcanPost"){
+//            PostData.onurcanPost
+//        }
+//        else PostData.huseyinPost
 
         binding.run {
             profileImage.setImageResource(profile.profilePhoto)
@@ -42,7 +53,7 @@ class SearchProfileFragment : Fragment() {
         }
         postAdapter = SearchProfileAdapter(postList)
         binding.RvPostsSearch.adapter = postAdapter
-        binding.RvPostsSearch.layoutManager = GridLayoutManager(context,3)
+        binding.RvPostsSearch.layoutManager = GridLayoutManager(context, 3)
     }
 }
 

@@ -34,7 +34,7 @@ class SearchFragmentAdapter :
                 search.profilePhoto)
             root.setOnClickListener {
 
-                val bundle = SearchFragmentDirections.actionSearchFragmentToSearchProfileFragment2(profile = search)
+                val bundle = SearchFragmentDirections.actionSearchFragmentToSearchProfileFragment2(search)
                 Navigation.findNavController(it).navigate(bundle)
 
             }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
+import com.example.newapplication.PostData
 import com.example.newapplication.databinding.ItemProfileCardBinding
 
 
@@ -21,6 +22,7 @@ class SearchProfileAdapter( var searchProfileList: List<Post>): RecyclerView.Ada
     override fun onBindViewHolder(holder: SearchProfileCardHolder, position: Int) {
         val post = searchProfileList.get(position)
         holder.binding.run {
+            this.imageView3.setImageResource(post.postPhoto)
 
         }
     }
