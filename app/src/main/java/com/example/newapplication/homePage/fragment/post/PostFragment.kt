@@ -29,7 +29,13 @@ class PostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val bundle:PostFragmentArgs by navArgs()
         val post = bundle.posts
-        val postList = PostData.yusufPost
+
+        val postList = when (post.userName) {
+            "JoeFree__" -> PostData.yusufPost
+            "Onurcan.Ozdemir" -> PostData.onurcanPost
+            "huseyinAcıkgoz" -> PostData.huseyinPost
+            else -> PostData.yusufPost
+        }
 
 
         postAdapter = PostAdapter(postList)

@@ -2,6 +2,7 @@ package com.example.newapplication.homePage.fragment.searchProfile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newapplication.Post
 import com.example.newapplication.PostData
@@ -23,6 +24,10 @@ class SearchProfileAdapter( var searchProfileList: List<Post>): RecyclerView.Ada
         val post = searchProfileList.get(position)
         holder.binding.run {
             this.imageView3.setImageResource(post.postPhoto)
+            root.setOnClickListener {
+                val bundle = SearchProfileFragmentDirections.actionSearchProfileFragmentToPostFragment(post)
+                Navigation.findNavController(it).navigate(bundle)
+            }
 
         }
     }

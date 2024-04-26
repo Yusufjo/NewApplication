@@ -46,6 +46,9 @@
         <argument
             android:name="profile"
             app:argType="com.example.newapplication.Post" />
+        <action
+            android:id="@+id/action_searchProfileFragment_to_postFragment"
+            app:destination="@id/postFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
