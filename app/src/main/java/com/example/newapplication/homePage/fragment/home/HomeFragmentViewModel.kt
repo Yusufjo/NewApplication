@@ -6,7 +6,4 @@ import androidx.lifecycle.ViewModel
 import com.example.newapplication.Post
 
 class HomeFragmentViewModel : ViewModel() {
-
-
-
 }

@@ -29,12 +29,10 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        observeViewModel()
+        viewModel.initProfileList()
+        val postList = viewModel.postList
 
-        val postList = listOf<Post>(
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusufpp),
-            Post("yusuf", 2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.onurcan)
-        )
         binding.run {
             profileImage.setImageResource(R.drawable.yusufpp)
             textViewPostSize.text = postList.size.toString()
@@ -42,24 +40,26 @@ class ProfileFragment : Fragment() {
             textViewName.text = postList[0].name
         }
 
-        val bundle = Bundle()
-        val profilePhoto = bundle?.getInt("profilephoto")
+        //  val bundle = Bundle()
+        //  val profilePhoto = bundle?.getInt("profilephoto")
         postAdapter = ProfileFragmentAdapter(postList)
-        postAdapter.onPostClickListener = object : ProfileFragmentAdapter.OnPostClickListener {
-            override fun onPostClick() {
-                if (bundle != null) {
-                    val homeFragment = HomeFragment()
-
-                }
-
-            }
-        }
-
-        postAdapter = ProfileFragmentAdapter(postList)
-        binding.Rv.adapter = postAdapter
+//        postAdapter.onPostClickListener = object : ProfileFragmentAdapter.OnPostClickListener {
+//            override fun onPostClick() {
+//                if (bundle != null) {
+//                    val homeFragment = HomeFragment()
+//
+//                }
+//
+//            }
+//        }
         binding.Rv.layoutManager = GridLayoutManager(context, postList.size)
+    }
 
-
+    private fun observeViewModel() {
+        viewModel.profilePostSizeLiveData.observe(viewLifecycleOwner) {
+            binding.Rv.adapter = postAdapter
+            postAdapter.postListProfile = it
+        }
     }
 }
 

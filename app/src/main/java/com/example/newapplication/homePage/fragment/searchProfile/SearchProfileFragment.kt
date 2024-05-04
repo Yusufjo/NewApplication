@@ -37,14 +37,6 @@ class SearchProfileFragment : Fragment() {
         }
 
 
-//        val postList = if (binding.textViewUserName.text == "huseyinAcıkgoz"){
-//            PostData.huseyinPost
-//        }
-//        else if (binding.textViewUserName.text == "onurcanPost"){
-//            PostData.onurcanPost
-//        }
-//        else PostData.huseyinPost
-
         binding.run {
             profileImage.setImageResource(profile.profilePhoto)
             textViewPostSize.text = postList.size.toString()

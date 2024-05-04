@@ -31,6 +31,7 @@ class PostAdapter(var postlists: List<Post>) : RecyclerView.Adapter<PostAdapter.
         }
         setLikeButton(holder,position)
         setUnLikeButton(holder, position)
+        setCommentButton(holder, position)
 
     }
     override fun getItemCount(): Int {
@@ -54,6 +55,13 @@ class PostAdapter(var postlists: List<Post>) : RecyclerView.Adapter<PostAdapter.
                     animation.cancelAnimation()
                     animation.visibility = View.GONE
                 }, 1000)
+            }
+        }
+    }
+    fun setCommentButton(holder: PostAdapter.PostViewHolder,position: Int){
+        holder.binding.run {
+            imageButtonComment.setOnClickListener {
+
             }
         }
     }
