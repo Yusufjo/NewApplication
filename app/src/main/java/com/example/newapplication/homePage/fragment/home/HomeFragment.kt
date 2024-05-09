@@ -21,20 +21,25 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        homeAdapter = HomeFragmentAdapter()
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val postList = listOf<Post>(
-            Post("Hüseyin",1, "huseyinAcıkgoz", R.drawable.huseyin, 378, R.drawable.huseyinpp),
-            Post("Yusuf",2, "JoeFree__", R.drawable.yusufpp, 478, R.drawable.yusuff),
-            Post("Onurcan Özdemir",3, "Onurcan.Ozdemir", R.drawable.onurcan, 672, R.drawable.onurcanpp)
-        )
-        homeAdapter = HomeFragmentAdapter(postList)
-        binding.RvPosts.adapter = homeAdapter
+        observeViewModel()
+        viewModel.initHomePostList()
+
+
         binding.RvPosts.layoutManager = LinearLayoutManager(requireContext())
     }
 
+    private fun observeViewModel() {
+        viewModel.homePostLiveData.observe(viewLifecycleOwner) {
+            binding.RvPosts.adapter = homeAdapter
+            homeAdapter.postList = it
+        }
+
+    }
 
 }

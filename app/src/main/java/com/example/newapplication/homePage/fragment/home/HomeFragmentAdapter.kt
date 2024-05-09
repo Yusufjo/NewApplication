@@ -8,8 +8,9 @@ import com.example.newapplication.Post
 import com.example.newapplication.databinding.ItemPostCardBinding
 
 
-class HomeFragmentAdapter(var postList: List<Post>) :
+class HomeFragmentAdapter() :
     RecyclerView.Adapter<HomeFragmentAdapter.PostCardHolder>() {
+    var postList= mutableListOf<Post>()
 
     inner class PostCardHolder(var binding: ItemPostCardBinding) :
         RecyclerView.ViewHolder(binding.root)
