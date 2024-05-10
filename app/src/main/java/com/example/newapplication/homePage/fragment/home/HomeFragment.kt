@@ -22,15 +22,12 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         homeAdapter = HomeFragmentAdapter()
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         observeViewModel()
         viewModel.initHomePostList()
-
-
         binding.RvPosts.layoutManager = LinearLayoutManager(requireContext())
     }
 

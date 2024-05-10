@@ -15,14 +15,12 @@ import com.example.newapplication.databinding.DialogNegativeBinding
 
 class LogInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    //private val viewModel: LoginActivityViewModel by viewModels()
-    private lateinit var viewModel:LoginActivityViewModel
+    private val viewModel: LoginActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = ViewModelProvider(this)[LoginActivityViewModel::class.java]
 
         setOnClickListeners()
         textWatchers()

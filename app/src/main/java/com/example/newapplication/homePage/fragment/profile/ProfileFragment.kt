@@ -40,18 +40,7 @@ class ProfileFragment : Fragment() {
             textViewName.text = postList[0].name
         }
 
-        //  val bundle = Bundle()
-        //  val profilePhoto = bundle?.getInt("profilephoto")
         postAdapter = ProfileFragmentAdapter(postList)
-//        postAdapter.onPostClickListener = object : ProfileFragmentAdapter.OnPostClickListener {
-//            override fun onPostClick() {
-//                if (bundle != null) {
-//                    val homeFragment = HomeFragment()
-//
-//                }
-//
-//            }
-//        }
         binding.Rv.layoutManager = GridLayoutManager(context, postList.size)
     }
 
